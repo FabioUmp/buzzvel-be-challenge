@@ -18,7 +18,7 @@ Route::fallback(function () {
     return '<h1>404 - Página não encontrada</h1>';
 });
 
-Route::prefix('holiday-plans')->group(function () {
+Route::middleware('auth:api')->prefix('holiday-plans')->group(function () {
     Route::get('/', [HolidayPlanController::class, 'index']);
     Route::get('{id}', [HolidayPlanController::class, 'show']);
     Route::post('/', [HolidayPlanController::class, 'store']);
